@@ -10,73 +10,51 @@ public class Menu {
 
     }
 
-    public void firstMenuChoice (){
+    public int firstMenuChoice () {
         Scanner myMenu = new Scanner(System.in);// Create a Scanner object
         System.out.println("Nouveau Personnage: 1");
         System.out.println("Quitter: 2");
         int menuChoice = myMenu.nextInt();// Read user input
-        if (menuChoice == 1) {
-            createCharac();
-        }
-        else if (menuChoice == 2) {
-            exit();
-        }
-
+        return menuChoice;
     }
+
+
+
 
      public Personnage createCharac() {
-        System.out.println("Créer un nouveau personnage");  // Output user input
-        String name = askCharacName();
-        String type = askCharacType();
+         System.out.println("Créer un nouveau personnage");  // Output user input
+         String name = askCharacName();
+         String type = askCharacType();
 
-        Personnage personnage = new Personnage(name, type);
-        System.out.println(personnage);
+         Personnage personnage = new Personnage(name, type);
+         System.out.println(personnage);
 
+         return personnage;
+     }
+
+     public int secondChoiceMenu() {
         System.out.println("\nValider le personnage: type '1'");
         System.out.println("Modifier mon personnage: type '2'");
-        int caracCreatEnd = scanner.nextInt();
-        if (caracCreatEnd == 1) {
+        int secondChoiceMenu = scanner.nextInt();
+        return  secondChoiceMenu;
+     }
 
-            // lancer le plateau de jeu
 
-        }
-        else if (caracCreatEnd == 2) {
-            Personnage modifPersonnage = modifyCharac(personnage);
-            System.out.println(modifPersonnage);
-        }
-        return personnage;
-    }
-
-    public Personnage modifyCharac (Personnage personnage) {
-
+     public int modifyChoice() {
         System.out.println("modifier le nom ? type '1'");
         System.out.println("modifier la classe ? type '2'");
         int modifchoice = scanner.nextInt();
-        if (modifchoice == 1) {
-            String newName = askCharacName();
-            personnage.setName(newName);
-        }
-        else if (modifchoice == 2) {
-            String newType = askCharacType();
-            if (newType.equals("Warrior")) {
-                personnage.setType(newType);
-                personnage.setHp(10);
-                personnage.setAttackForce(10);
-                personnage.setDefensif(new EquipementDefensif("Bouclier", 10, "Bouclier rond"));
-                personnage.setOffensif(new EquipementOffensif("Arme", 10, "Hache"));
-            }
-            else if (newType.equals("Magician")) {
-                personnage.setType(newType);
-                personnage.setHp(6);
-                personnage.setAttackForce(15);
-                personnage.setDefensif(new EquipementDefensif("Bouclier", 10, "Bouclier rond"));
-                personnage.setOffensif(new EquipementOffensif("Arme", 10, "Hache"));
-            }
-
-
-        }
-        return personnage;
+        return modifchoice;
     }
+
+    public int rollChoice() {
+        System.out.println("\nlancer le dé? type '1'");
+        System.out.println("Quitter le jeu ? type '2'");
+        int rollchoice = scanner.nextInt();
+        return rollchoice;
+    }
+
+
 
     public String askCharacName () {
         System.out.println("Entrer votre Nom");
@@ -84,6 +62,9 @@ public class Menu {
         String name = scanner.nextLine();
         return name;
     }
+
+
+
     public String askCharacType () {
         System.out.println("Warrior: 1 ou Magician: 2");
         scanner = new Scanner(System.in);
@@ -101,12 +82,14 @@ public class Menu {
         return type;
     }
 
+
+
      public void exit() {
-        System.out.println("Quitter le jeu ?");
-        System.out.println("YES");
-        System.out.println("NO");
-        String confirmExit = scanner.nextLine();
-        System.out.println("Quitter le jeu ?" + confirmExit);
+        System.out.println("QUITTER le jeu ?");
+        System.out.println("YES: '1'");
+        System.out.println("NO: '2'");
+        int confirmExit = scanner.nextInt();
+        System.out.println("Quitter le jeu: " + confirmExit);
         System.exit(0);
     }
 }

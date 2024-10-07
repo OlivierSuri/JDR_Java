@@ -19,6 +19,10 @@ public class Personnage {
     public Personnage(String name, String type) {
         this.name = name;
         this.type = type;
+        this.initialAttribute();
+    }
+
+    public void initialAttribute() {
         if ("Warrior".equals(type)) {
             this.hp = 10;
             this.attackForce = 10;
@@ -30,7 +34,6 @@ public class Personnage {
             this.attackForce = 15;
             this.defensif = new EquipementDefensif("Philtre", 10, "Champ de force");
             this.offensif = new EquipementOffensif("Sort", 10, "Projectils Magiques");
-
         }
     }
 
@@ -90,5 +93,6 @@ public class Personnage {
 
     public void setType(String type) {
         this.type = type;
+
     }
 }

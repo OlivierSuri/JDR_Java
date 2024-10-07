@@ -1,12 +1,12 @@
 import java.util.SplittableRandom;
 
 public class Personnage {
-    private String type;
-    private String name;
-    private int hp;
-    private int attackForce;
-    private EquipementDefensif defensif;
-    private EquipementOffensif offensif;
+    protected String type;
+    protected String name;
+    protected int hp;
+    protected int attackForce;
+    protected EquipementDefensif defensif;
+    protected EquipementOffensif offensif;
 
     public Personnage() {
         this("Ragnar");

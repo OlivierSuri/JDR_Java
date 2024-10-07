@@ -25,10 +25,14 @@ public class Menu {
          System.out.println("Créer un nouveau personnage");  // Output user input
          String name = askCharacName();
          String type = askCharacType();
-
-         Personnage personnage = new Personnage(name, type);
-         System.out.println(personnage);
-
+         if (type.equals("Warrior")) {
+             Personnage personnage = new Guerrier(name);
+             System.out.println(personnage);
+         }
+         else if (type.equals("Magician")) {
+             Personnage personnage = new Magicien(name);
+             System.out.println(personnage);
+         }
          return personnage;
      }
 

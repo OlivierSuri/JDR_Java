@@ -1,3 +1,7 @@
+import personnages.Guerrier;
+import personnages.Magicien;
+import personnages.Personnage;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -12,7 +16,7 @@ public class Menu {
 
     public int firstMenuChoice () {
         Scanner myMenu = new Scanner(System.in);// Create a Scanner object
-        System.out.println("Nouveau Personnage: 1");
+        System.out.println("Créer un nouveau personnage: 1");
         System.out.println("Quitter: 2");
         int menuChoice = myMenu.nextInt();// Read user input
         return menuChoice;

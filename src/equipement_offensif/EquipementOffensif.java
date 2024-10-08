@@ -1,4 +1,6 @@
-abstract class EquipementOffensif {
+package equipement_offensif;
+
+public abstract class EquipementOffensif {
     protected String type;
     protected int nivAttack;
     protected String name;

@@ -1,6 +1,9 @@
-import java.util.SplittableRandom;
+package personnages;
 
-abstract class Personnage {
+import equipement_defensif.EquipementDefensif;
+import equipement_offensif.EquipementOffensif;
+
+public class Personnage {
     protected String type;
     protected String name;
     protected int hp;

@@ -1,3 +1,5 @@
+package equipement_offensif;
+
 public class Sort extends EquipementOffensif {
     public Sort(String type) {
         super(type);

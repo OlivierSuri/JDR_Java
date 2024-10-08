@@ -1,4 +1,6 @@
-abstract class EquipementDefensif {
+package equipement_defensif;
+
+public abstract class EquipementDefensif {
 
     protected String type;
     protected int nivDefense;

@@ -1,10 +1,22 @@
-import javax.swing.*;
+import equipement_defensif.Bouclier;
+import equipement_offensif.Arme;
+import personnages.Guerrier;
+import personnages.Magicien;
+import personnages.Personnage;
 
 public class Game {
 
-    private int[] gameBoard = initBoard();
-    private int playerPosition = 0;
+
+    private int playerPosition;
     Personnage character;
+    private int[] gameBoard;
+
+    public Game (){
+        this.playerPosition = 0;
+        this.character = null;
+        this.gameBoard = initBoard();
+    }
+
 
     Menu startMenu = new Menu();
 
@@ -23,10 +35,19 @@ public class Game {
                 if (modifyChoice == 1) {
                     String newName = startMenu.askCharacName();
                     this.character.setName(newName);
+                    System.out.println(character);
                 }
                 else if (modifyChoice == 2) {
                     String newType = startMenu.askCharacType();
                     this.character.setType(newType);
+                    Personnage newCharacter;
+                    if (newType.equals("Warrior")) {
+                        newCharacter = new Guerrier(character.getName());
+                    }
+                    else {
+                        newCharacter = new Magicien(character.getName());
+                    }
+                    System.out.println(newCharacter);
                 }
                 break;
 
@@ -62,6 +83,7 @@ public class Game {
         System.out.println("dé: " + dice);
         return dice;
     }
+
     int playerMove(int pPosition, int pRoll){
         pPosition = pPosition + pRoll;
         System.out.println("Vous êtes case: " + pPosition);

@@ -1,3 +1,8 @@
+package personnages;
+
+import equipement_defensif.Bouclier;
+import equipement_offensif.Arme;
+
 public class Guerrier extends Personnage{
 
 

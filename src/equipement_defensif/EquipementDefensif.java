@@ -2,38 +2,22 @@ package equipement_defensif;
 
 public abstract class EquipementDefensif {
 
-    protected String type;
     protected int nivDefense;
     protected String name;
 
-    public EquipementDefensif() {
-        this("Bouclier");
+    public EquipementDefensif(String name){
+        this.name = name;
     }
 
-    public EquipementDefensif(String type){
-        this(type, 10);
-    }
-     public EquipementDefensif(String type, int nivDefense){
-        this(type, nivDefense, "Bouclier Rond");
-     }
-
-    public EquipementDefensif(String type, int nivDefense, String name) {
-       this.type = type;
-       this.nivDefense = nivDefense;
-       this.name = name;
+    public EquipementDefensif(String name, int nivDefense ) {
+        this.name = name;
+        this.nivDefense = nivDefense;
     }
     public String toString(){
-        return type +"\n"+
-                "Niveau de défense: " + nivDefense +"\n"+
-                "Name: " + name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+            String message =
+                "Name: " + name + "\n"+
+                "Niveau de défense: " + nivDefense +"\n";
+            return message;
     }
 
     public int getNivDefense() {

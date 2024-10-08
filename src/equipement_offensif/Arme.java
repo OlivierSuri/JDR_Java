@@ -2,10 +2,15 @@ package equipement_offensif;
 
 public class Arme extends EquipementOffensif{
 
-    public Arme(String type) {
-        super(type);
+    public Arme(String name) {
+        super(name);
         this.nivAttack = 5;
-        this.name = "Hache";
+    }
+
+    public String toString(){
+        String message = "Type Arme \n"+
+                super.toString();
+        return message;
     }
 
 

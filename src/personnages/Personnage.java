@@ -16,6 +16,7 @@ public class Personnage {
     }
 
     public Personnage(String name) {
+
         this(name, "Warrior");
     }
 
@@ -30,7 +31,7 @@ public class Personnage {
                         "Name: " + this.name + "\n" +
                         "Type: " + this.type + "\n" +
                         "Health: " + this.hp + "\n" +
-                        "Attack Force" + this.attackForce + "\n\n"+
+                        "Attack Force: " + this.attackForce + "\n\n"+
                         "Equipement Offensif: " + this.offensif.toString()+"\n"+
                         "Equipement Defensif: " + this.defensif.toString();
 

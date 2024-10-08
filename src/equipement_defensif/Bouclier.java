@@ -3,11 +3,14 @@ package equipement_defensif;
 public class Bouclier extends EquipementDefensif {
 
 
-    public Bouclier(String type) {
-        super(type);
+    public Bouclier(String name) {
+        super(name);
         this.nivDefense = 8;
-        this.name = "Bouclier rond";
     }
-
+    public String toString(){
+        String message = "Type Bouclier \n"+
+                super.toString();
+        return message;
+    }
 
 }

@@ -1,5 +1,7 @@
 import equipement_defensif.Bouclier;
 import equipement_offensif.Arme;
+import equipement_offensif.EquipementOffensif;
+import equipement_offensif.Sort;
 import personnages.Guerrier;
 import personnages.Magicien;
 import personnages.Personnage;
@@ -46,6 +48,7 @@ public class Game {
                     }
                     else {
                         newCharacter = new Magicien(character.getName());
+//                      newCharacter.setOffensif(new Arme("Hache"));
                     }
                     System.out.println(newCharacter);
                 }
@@ -74,8 +77,6 @@ public class Game {
         int[] board = new int[63];
         return board;
     }
-
-
 
     //Lancer un dé
     public int diceRoll() {

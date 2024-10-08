@@ -1,7 +1,7 @@
-public class EquipementOffensif {
-    private String type;
-    private int nivAttack;
-    private String name;
+abstract class EquipementOffensif {
+    protected String type;
+    protected int nivAttack;
+    protected String name;
 
     public EquipementOffensif() {
         this("Arme");
@@ -18,7 +18,6 @@ public class EquipementOffensif {
         this.nivAttack = nivDefense;
         this.name = name;
     }
-
     public String toString(){
         return type+"\n"+
                 "Niveau d'attaque: " + nivAttack + "\n"+

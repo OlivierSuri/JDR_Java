@@ -1,10 +1,8 @@
-import javax.print.DocFlavor;
+abstract class EquipementDefensif {
 
-public class EquipementDefensif {
-
-    private String type;
-    private int nivDefense;
-    private String name;
+    protected String type;
+    protected int nivDefense;
+    protected String name;
 
     public EquipementDefensif() {
         this("Bouclier");
@@ -22,7 +20,6 @@ public class EquipementDefensif {
        this.nivDefense = nivDefense;
        this.name = name;
     }
-
     public String toString(){
         return type +"\n"+
                 "Niveau de défense: " + nivDefense +"\n"+

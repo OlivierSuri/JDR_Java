@@ -1,6 +1,6 @@
 import java.util.SplittableRandom;
 
-public class Personnage {
+abstract class Personnage {
     protected String type;
     protected String name;
     protected int hp;
@@ -19,35 +19,20 @@ public class Personnage {
     public Personnage(String name, String type) {
         this.name = name;
         this.type = type;
-        this.initialAttribute();
-    }
-
-    public void initialAttribute() {
-        if ("Warrior".equals(type)) {
-            this.hp = 10;
-            this.attackForce = 10;
-            this.defensif = new EquipementDefensif("Bouclier", 10, "Bouclier rond");
-            this.offensif = new EquipementOffensif("Arme", 10, "Hache");
-        }
-        else if ("Magician".equals(type)) {
-            this.hp = 6;
-            this.attackForce = 15;
-            this.defensif = new EquipementDefensif("Philtre", 10, "Champ de force");
-            this.offensif = new EquipementOffensif("Sort", 10, "Projectils Magiques");
-        }
     }
 
     public String toString() {
         return
                 "Personnage: \n" +
-                "Name: " + this.name + "\n" +
-                "Type: " + this.type + "\n" +
-                "Health: " + this.hp + "\n" +
-                "Attack Force" + this.attackForce + "\n\n"+
-                "Equipement Offensif: " + this.offensif.toString()+"\n"+
-                "Equipement Defensif: " + this.defensif.toString();
+                        "Name: " + this.name + "\n" +
+                        "Type: " + this.type + "\n" +
+                        "Health: " + this.hp + "\n" +
+                        "Attack Force" + this.attackForce + "\n\n"+
+                        "Equipement Offensif: " + this.offensif.toString()+"\n"+
+                        "Equipement Defensif: " + this.defensif.toString();
 
     }
+
 
     public EquipementDefensif getDefensif() {
         return defensif;

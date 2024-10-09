@@ -1,4 +1,6 @@
+import Board.Board;
 import equipement_defensif.Bouclier;
+import equipement_defensif.Philtre;
 import equipement_offensif.Arme;
 import equipement_offensif.EquipementOffensif;
 import equipement_offensif.Sort;
@@ -11,12 +13,12 @@ public class Game {
 
     private int playerPosition;
     Personnage character;
-    private int[] gameBoard;
+    private Board gameBoard;
 
     public Game (){
         this.playerPosition = 0;
         this.character = null;
-        this.gameBoard = initBoard();
+        this.gameBoard = new Board();
     }
 
 
@@ -62,8 +64,7 @@ public class Game {
         while (playerPosition <= 63) {
             int rollChoice = startMenu.rollChoice();
             if (rollChoice == 1) {
-                int diceResult = diceRoll();
-                playerPosition = playerMove(playerPosition, diceResult);
+                jouerUnTour();
             }
             else if (rollChoice == 2) {
                 startMenu.exit();
@@ -78,9 +79,13 @@ public class Game {
         return board;
     }
 
-    //Lancer un dé
+    /**
+     * lancer le dé
+     * @return
+     */
     public int diceRoll() {
-        int dice  = (int)(Math.random()*6)+1;
+//        int dice  = (int)(Math.random()*6)+1;
+        int dice = 1;
         System.out.println("dé: " + dice);
         return dice;
     }
@@ -89,6 +94,13 @@ public class Game {
         pPosition = pPosition + pRoll;
         System.out.println("Vous êtes case: " + pPosition);
         return pPosition;
+    }
+
+    void jouerUnTour (){
+        diceRoll();
+        int diceResult = diceRoll();
+        playerMove(playerPosition, diceResult);
+        gameBoard.get( this.playerPosition ).interact( hero );
     }
 
 }

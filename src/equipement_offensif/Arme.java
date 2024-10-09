@@ -1,10 +1,20 @@
 package equipement_offensif;
 
-public class Arme extends EquipementOffensif{
+import Board.Case;
+import personnages.Personnage;
+
+import java.io.Serializable;
+
+public class Arme extends EquipementOffensif implements Case {
 
     public Arme(String name) {
         super(name);
-        this.nivAttack = 5;
+        this.nivAttack = 2;
+    }
+
+    @Override
+    public void doAction(Personnage personnage) {
+        personnage.setOffensif(personnage.getOffensif());
     }
 
     public String toString(){
@@ -12,6 +22,4 @@ public class Arme extends EquipementOffensif{
                 super.toString();
         return message;
     }
-
-
 }

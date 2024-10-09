@@ -4,9 +4,8 @@ public abstract class EquipementOffensif {
     protected int nivAttack;
     protected String name;
 
-
     public EquipementOffensif(String name) {
-        this.name = name;
+        this(name, 1);
     }
 
     public EquipementOffensif(String name, int nivAttack) {

@@ -6,7 +6,7 @@ public abstract class EquipementDefensif {
     protected String name;
 
     public EquipementDefensif(String name){
-        this.name = name;
+        this(name, 1);
     }
 
     public EquipementDefensif(String name, int nivDefense ) {

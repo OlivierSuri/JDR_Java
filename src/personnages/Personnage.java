@@ -25,6 +25,7 @@ public class Personnage {
         this.type = type;
     }
 
+
     public String toString() {
         return
                 "Personnage: \n" +
@@ -34,7 +35,6 @@ public class Personnage {
                         "Attack Force: " + this.attackForce + "\n\n"+
                         "Equipement Offensif: " + this.offensif.toString()+"\n"+
                         "Equipement Defensif: " + this.defensif.toString();
-
     }
 
 

@@ -1,7 +1,4 @@
-package equipement_offensif;
-
-import Board.Case;
-import personnages.Personnage;
+package equipements.equipement_offensif;
 
 
 public class Massue extends Arme {

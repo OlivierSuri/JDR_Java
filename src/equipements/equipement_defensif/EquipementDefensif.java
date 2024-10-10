@@ -1,16 +1,18 @@
-package equipement_defensif;
+package equipements.equipement_defensif;
+import equipements.Equipements;
 
-public abstract class EquipementDefensif {
+
+public abstract class EquipementDefensif extends Equipements {
 
     protected int nivDefense;
-    protected String name;
 
-    public EquipementDefensif(String name){
-        this(name, 1);
+    public EquipementDefensif(String name) {
+        super(name, "EquipementDefensif");
+        this.nivDefense = 1;
     }
 
     public EquipementDefensif(String name, int nivDefense ) {
-        this.name = name;
+        super(name, "EquipementDefensif");
         this.nivDefense = nivDefense;
     }
     public String toString(){
@@ -28,11 +30,4 @@ public abstract class EquipementDefensif {
         this.nivDefense = nivDefense;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

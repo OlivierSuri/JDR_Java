@@ -1,4 +1,4 @@
-package equipement_offensif;
+package equipements.equipement_offensif;
 
 public class Epee extends Arme {
     public Epee() {

@@ -1,9 +1,9 @@
 package Potion;
 
-import Board.Case;
+import board.Case;
 import personnages.Personnage;
 
-public class EquipementPotion implements Case {
+public abstract class EquipementPotion implements Case {
 
     protected String name;
     protected int regenPts;

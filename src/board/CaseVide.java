@@ -1,4 +1,4 @@
-package Board;
+package board;
 
 
 import personnages.Personnage;
@@ -6,6 +6,6 @@ import personnages.Personnage;
 public class CaseVide implements Case {
     @Override
     public void doAction(Personnage personnage) {
-        System.out.println( "Cette case est vide ! \n Continuez" );
+        System.out.println( "Cette case est vide ! \nContinuez" );
     }
 }

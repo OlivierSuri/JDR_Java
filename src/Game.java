@@ -1,9 +1,5 @@
-import Board.Board;
-import equipement_defensif.Bouclier;
-import equipement_defensif.Philtre;
-import equipement_offensif.Arme;
-import equipement_offensif.EquipementOffensif;
-import equipement_offensif.Sort;
+import board.Board;
+import board.JoueurHorsPlateau;
 import personnages.Guerrier;
 import personnages.Magicien;
 import personnages.Personnage;
@@ -12,14 +8,16 @@ public class Game {
 
 
     private int playerPosition;
-    Personnage character;
+    private Personnage character;
     private Board gameBoard;
 
     public Game (){
         this.playerPosition = 0;
         this.character = null;
+        //init board
         this.gameBoard = new Board();
     }
+
 
 
     Menu startMenu = new Menu();
@@ -50,7 +48,6 @@ public class Game {
                     }
                     else {
                         newCharacter = new Magicien(character.getName());
-//                      newCharacter.setOffensif(new Arme("Hache"));
                     }
                     System.out.println(newCharacter);
                 }
@@ -59,9 +56,15 @@ public class Game {
             default: break;
 
         }
-        initBoard();
 
-        while (playerPosition <= 63) {
+        this.character = new Guerrier("Gérard");
+
+
+        try {
+            gameBoard.accept(character, playerPosition);
+        } catch (JoueurHorsPlateau e) {
+        }
+        while (playerPosition <= gameBoard.getBoardSize()) {
             int rollChoice = startMenu.rollChoice();
             if (rollChoice == 1) {
                 jouerUnTour();
@@ -73,11 +76,6 @@ public class Game {
         }
     }
 
-    //initialisation du board
-    public int[] initBoard(){
-        int[] board = new int[63];
-        return board;
-    }
 
     /**
      * lancer le dé
@@ -90,17 +88,33 @@ public class Game {
         return dice;
     }
 
-    int playerMove(int pPosition, int pRoll){
-        pPosition = pPosition + pRoll;
+    public int playerMove(int pPosition, int pRoll) throws JoueurHorsPlateau {
+        int newPosition = pPosition + pRoll;
+        gameBoard.accept(this.character, newPosition);
+        pPosition = newPosition;
         System.out.println("Vous êtes case: " + pPosition);
         return pPosition;
     }
 
-    void jouerUnTour (){
-        diceRoll();
+    public int jouerUnTour (){
         int diceResult = diceRoll();
-        playerMove(playerPosition, diceResult);
-        gameBoard.get( this.playerPosition ).interact( hero );
+        try {
+            playerMove(playerPosition, diceResult);
+        }catch (JoueurHorsPlateau e){
+            playerPosition = gameBoard.getBoardSize()-1;
+            System.out.println(e.getMessage());
+        }
+        return playerPosition;
+//      gameBoard.get( this.playerPosition).interact( hero );
     }
 
+
+
+    public int getPlayerPosition() {
+        return playerPosition;
+    }
+
+    public void setPlayerPosition(int playerPosition) {
+        this.playerPosition = playerPosition;
+    }
 }

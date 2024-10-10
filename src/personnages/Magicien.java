@@ -1,7 +1,7 @@
 package personnages;
 
-import equipement_defensif.Philtre;
-import equipement_offensif.Sort;
+import equipements.equipement_defensif.Philtre;
+import equipements.equipement_offensif.Sort;
 
 public class Magicien extends Personnage {
 

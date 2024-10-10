@@ -1,11 +1,11 @@
-package equipement_defensif;
+package equipements.equipement_defensif;
 
 public class Bouclier extends EquipementDefensif {
 
 
     public Bouclier(String name) {
         super(name);
-        this.nivDefense = 8;
+        this.nivDefense = 2;
     }
     public String toString(){
         String message = "Type Bouclier \n"+

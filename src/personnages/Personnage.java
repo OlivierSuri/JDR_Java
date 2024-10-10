@@ -1,9 +1,9 @@
 package personnages;
 
-import equipement_defensif.EquipementDefensif;
-import equipement_offensif.EquipementOffensif;
+import equipements.equipement_defensif.EquipementDefensif;
+import equipements.equipement_offensif.EquipementOffensif;
 
-public class Personnage {
+public abstract class Personnage {
     protected String type;
     protected String name;
     protected int hp;
@@ -26,6 +26,7 @@ public class Personnage {
     }
 
 
+
     public String toString() {
         return
                 "Personnage: \n" +
@@ -35,6 +36,24 @@ public class Personnage {
                         "Attack Force: " + this.attackForce + "\n\n"+
                         "Equipement Offensif: " + this.offensif.toString()+"\n"+
                         "Equipement Defensif: " + this.defensif.toString();
+    }
+
+    public int totalAttackPower(){
+        return this.attackForce+this.offensif.getNivAttack();
+    }
+
+
+    public void doAttack(Personnage opponent) {
+        int damage = totalAttackPower();
+        int opponentLife = opponent.getHp() + getDefensif().getNivDefense();
+        opponent.setHp(opponentLife - damage);
+        System.out.println("La vie de votre ennemi est: " + opponentLife);
+        if (opponent.getHp() <= 0) {
+            System.out.println("Votre ennemi meurt");
+        }else{
+            System.out.println("L'ennemi vous attaque");
+        }
+
     }
 
 
@@ -56,9 +75,7 @@ public class Personnage {
         return attackForce;
     }
 
-    public void setAttackForce(int attackForce) {
-        this.attackForce = attackForce;
-    }
+    public void setAttackForce(int attackForce) {this.attackForce = attackForce;}
 
     public int getHp() {
         return hp;

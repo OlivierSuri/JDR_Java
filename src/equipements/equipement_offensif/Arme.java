@@ -1,9 +1,8 @@
-package equipement_offensif;
+package equipements.equipement_offensif;
 
-import Board.Case;
+
+import board.Case;
 import personnages.Personnage;
-
-import java.io.Serializable;
 
 public class Arme extends EquipementOffensif implements Case {
 
@@ -14,6 +13,7 @@ public class Arme extends EquipementOffensif implements Case {
 
     @Override
     public void doAction(Personnage personnage) {
+
         personnage.setOffensif(personnage.getOffensif());
     }
 

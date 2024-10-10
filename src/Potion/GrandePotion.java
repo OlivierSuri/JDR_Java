@@ -1,6 +1,6 @@
 package Potion;
 
-import Board.Case;
+import board.Case;
 import personnages.Personnage;
 
 public class GrandePotion extends EquipementPotion implements Case {

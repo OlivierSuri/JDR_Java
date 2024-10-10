@@ -1,6 +1,6 @@
 unnamed package
-Board
-equipement_defensif
-equipement_offensif
+board
+equipements.equipement_defensif
+equipements.equipement_offensif
 personnages
 Potion

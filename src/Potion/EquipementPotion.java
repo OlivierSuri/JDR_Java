@@ -18,6 +18,10 @@ public abstract class EquipementPotion implements Case {
 
     @Override
     public void doAction(Personnage personnage) {
-        personnage.setHp(personnage.getHp() + regenPts);
+        System.out.println("Vous trouver une " + this.name + "!");
+        personnage.receiveHealing(regenPts);
+        System.out.println("Vous Récupérer " + this.regenPts + " hp !");
+
+
     }
 }

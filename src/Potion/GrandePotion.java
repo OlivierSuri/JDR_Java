@@ -9,8 +9,5 @@ public class GrandePotion extends EquipementPotion implements Case {
         this.regenPts = 5;
     }
 
-    @Override
-    public void doAction(Personnage personnage) {
-        personnage.setHp(personnage.getHp() + 5);
-    }
+
 }

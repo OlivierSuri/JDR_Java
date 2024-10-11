@@ -9,8 +9,5 @@ public class PotionStandard extends EquipementPotion implements Case {
         this.regenPts = 2;
     }
 
-    @Override
-    public void doAction(Personnage personnage) {
-        personnage.setHp(personnage.getHp() + regenPts);
-    }
+
 }

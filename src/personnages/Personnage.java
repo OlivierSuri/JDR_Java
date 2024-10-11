@@ -1,7 +1,11 @@
 package personnages;
 
 import equipements.equipement_defensif.EquipementDefensif;
+import equipements.equipement_offensif.Arme;
 import equipements.equipement_offensif.EquipementOffensif;
+import equipements.equipement_offensif.Sort;
+
+import java.util.ArrayList;
 
 public abstract class Personnage {
     protected String type;
@@ -13,6 +17,16 @@ public abstract class Personnage {
 
     public Personnage() {
         this("Ragnar");
+    }
+
+    protected Personnage(String name, String type, int hp, int attackForce, EquipementDefensif defensif, EquipementOffensif offensif) {
+
+        this.name = name;
+        this.type = type;
+        this.hp = hp;
+        this.attackForce = attackForce;
+        this.defensif = defensif;
+        this.offensif = offensif;
     }
 
     public Personnage(String name) {
@@ -45,17 +59,32 @@ public abstract class Personnage {
 
     public void doAttack(Personnage opponent) {
         int damage = totalAttackPower();
-        int opponentLife = opponent.getHp() + getDefensif().getNivDefense();
-        opponent.setHp(opponentLife - damage);
-        System.out.println("La vie de votre ennemi est: " + opponentLife);
-        if (opponent.getHp() <= 0) {
+        opponent.receiveAttack(damage);
+        System.out.println("La vie de votre ennemi est: " + opponent.getHp());
+        if (!opponent.isAlive()) {
             System.out.println("Votre ennemi meurt");
-        }else{
+        } else {
             System.out.println("L'ennemi vous attaque");
+            opponent.doAttack(this);
         }
 
     }
+    public void receiveAttack(int attack){
+        this.hp-=attack;
+    }
 
+    public boolean isAlive(){
+        return this.hp>0;
+    }
+    public void receiveHealing(int healing){
+        this.hp+=healing;
+    }
+    public void lootGear(Arme gear) {
+        setOffensif(gear);
+    }
+    public void lootSpell (Sort spell){
+        setOffensif(spell);
+    }
 
     public EquipementDefensif getDefensif() {
         return defensif;
@@ -101,4 +130,6 @@ public abstract class Personnage {
         this.type = type;
 
     }
+
+
 }

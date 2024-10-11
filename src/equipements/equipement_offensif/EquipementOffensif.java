@@ -26,8 +26,8 @@ public abstract class EquipementOffensif extends Equipements{
         return nivAttack;
     }
 
-    public void setNivAttack(int nivDefense) {
-        this.nivAttack = nivDefense;
+    public void setNivAttack(int nivAttack) {
+        this.nivAttack = nivAttack;
     }
 
 }

@@ -23,51 +23,54 @@ public class Game {
     Menu startMenu = new Menu();
 
     public void startMenu() {
-        int firstChoice = startMenu.firstMenuChoice();
-            if (firstChoice == 1) {
-                this.character = startMenu.createCharac();
-            } else {
-                startMenu.exit();
-            }
+//        int firstChoice = startMenu.firstMenuChoice();
+//            if (firstChoice == 1) {
+//                this.character = startMenu.createCharac();
+//            } else {
+//                startMenu.exit();
+//            }
+//
+//        int secondChoice = startMenu.secondChoiceMenu();
+//        switch (secondChoice) {
+//
+//            case 2: int modifyChoice = startMenu.modifyChoice();
+//                if (modifyChoice == 1) {
+//                    String newName = startMenu.askCharacName();
+//                    this.character.setName(newName);
+//                    System.out.println(character);
+//                }
+//                else if (modifyChoice == 2) {
+//                    String newType = startMenu.askCharacType();
+//                    this.character.setType(newType);
+//                    Personnage newCharacter;
+//                    if (newType.equals("Warrior")) {
+//                        newCharacter = new Guerrier(character.getName());
+//                    }
+//                    else {
+//                        newCharacter = new Magicien(character.getName());
+//                    }
+//                    System.out.println(newCharacter);
+//                }
+//                break;
+//
+//            default: break;
+//        }
 
-        int secondChoice = startMenu.secondChoiceMenu();
-        switch (secondChoice) {
-
-            case 2: int modifyChoice = startMenu.modifyChoice();
-                if (modifyChoice == 1) {
-                    String newName = startMenu.askCharacName();
-                    this.character.setName(newName);
-                    System.out.println(character);
-                }
-                else if (modifyChoice == 2) {
-                    String newType = startMenu.askCharacType();
-                    this.character.setType(newType);
-                    Personnage newCharacter;
-                    if (newType.equals("Warrior")) {
-                        newCharacter = new Guerrier(character.getName());
-                    }
-                    else {
-                        newCharacter = new Magicien(character.getName());
-                    }
-                    System.out.println(newCharacter);
-                }
-                break;
-
-            default: break;
-
-        }
-
-        this.character = new Guerrier("Gérard");
+        this.character = new Magicien("Gérard");
 
 
         try {
             gameBoard.accept(character, playerPosition);
         } catch (JoueurHorsPlateau e) {
         }
-        while (playerPosition <= gameBoard.getBoardSize()) {
+        while (playerPosition <= gameBoard.getBoardSize() && character.isAlive()) {
             int rollChoice = startMenu.rollChoice();
             if (rollChoice == 1) {
+                clearScreen();
                 jouerUnTour();
+            }
+            else if (rollChoice == 2) {
+                System.out.print(character.toString());
             }
             else if (rollChoice == 2) {
                 startMenu.exit();
@@ -99,7 +102,7 @@ public class Game {
     public int jouerUnTour (){
         int diceResult = diceRoll();
         try {
-            playerMove(playerPosition, diceResult);
+            playerPosition = playerMove(playerPosition, diceResult);
         }catch (JoueurHorsPlateau e){
             playerPosition = gameBoard.getBoardSize()-1;
             System.out.println(e.getMessage());
@@ -108,6 +111,12 @@ public class Game {
 //      gameBoard.get( this.playerPosition).interact( hero );
     }
 
+    // Méthode pour nettoyer l'écran du terminal
+    public static void clearScreen() {
+        for (int i = 0; i < 50; i++) {  // Tu peux ajuster le nombre de lignes si nécessaire
+            System.out.println();
+        }
+    }
 
 
     public int getPlayerPosition() {

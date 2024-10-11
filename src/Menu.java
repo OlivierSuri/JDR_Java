@@ -56,8 +56,11 @@ public class Menu {
     }
 
     public int rollChoice() {
-        System.out.println("\nlancer le dé? type '1'");
-        System.out.println("Quitter le jeu ? type '2'");
+        System.out.println("\n\n====================================");
+        System.out.println("Lancer le dé ? type '1'");
+        System.out.println("Afficher mon personnage ? type '2'");
+        System.out.println("Quitter le jeu ? type '3'");
+        System.out.println("====================================");
         int rollchoice = scanner.nextInt();
         return rollchoice;
     }

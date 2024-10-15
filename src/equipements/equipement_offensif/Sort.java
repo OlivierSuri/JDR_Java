@@ -15,7 +15,7 @@ public class Sort extends EquipementOffensif implements Case {
 
     @Override
     public void doAction(Personnage personnage) {
-        System.out.println("Vous trouver un sort ! C'est: " + this.name + ": " + " attaque + " + this.nivAttack);
+        System.out.println("Vous trouver un sort ! " + this.name + ": " + " attaque + " + this.nivAttack);
         if (!(personnage instanceof Magicien)) {
             System.out.println("Vous ne pouvez pas prendre ce sort");
             return;

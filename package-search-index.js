@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Board"},{"l":"equipements.equipement_defensif"},{"l":"equipements.equipement_offensif"},{"l":"personnages"},{"l":"Potion"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Board"},{"l":"equipements.equipement_defensif"},{"l":"equipements.equipement_offensif"},{"l":"personnages"},{"l":"equipements.Potion"}];updateSearchResults();

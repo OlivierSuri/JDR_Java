@@ -1,7 +1,6 @@
-package Potion;
+package equipements.Potion;
 
 import board.Case;
-import personnages.Personnage;
 
 public class PotionStandard extends EquipementPotion implements Case {
     public PotionStandard() {

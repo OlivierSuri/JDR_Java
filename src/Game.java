@@ -23,60 +23,71 @@ public class Game {
     Menu startMenu = new Menu();
 
     public void startMenu() {
-//        int firstChoice = startMenu.firstMenuChoice();
-//            if (firstChoice == 1) {
-//                this.character = startMenu.createCharac();
-//            } else {
-//                startMenu.exit();
-//            }
-//
-//        int secondChoice = startMenu.secondChoiceMenu();
-//        switch (secondChoice) {
-//
-//            case 2: int modifyChoice = startMenu.modifyChoice();
-//                if (modifyChoice == 1) {
-//                    String newName = startMenu.askCharacName();
-//                    this.character.setName(newName);
-//                    System.out.println(character);
-//                }
-//                else if (modifyChoice == 2) {
-//                    String newType = startMenu.askCharacType();
-//                    this.character.setType(newType);
-//                    Personnage newCharacter;
-//                    if (newType.equals("Warrior")) {
-//                        newCharacter = new Guerrier(character.getName());
-//                    }
-//                    else {
-//                        newCharacter = new Magicien(character.getName());
-//                    }
-//                    System.out.println(newCharacter);
-//                }
-//                break;
-//
-//            default: break;
-//        }
+        int firstChoice = startMenu.firstMenuChoice();
+            if (firstChoice == 1) {
+                this.character = startMenu.createCharac();
+            } else {
+                startMenu.exit();
+            }
 
-        this.character = new Magicien("Gérard");
+        int secondChoice = startMenu.secondChoiceMenu();
+        switch (secondChoice) {
+
+            case 2: int modifyChoice = startMenu.modifyChoice();
+                if (modifyChoice == 1) {
+                    String newName = startMenu.askCharacName();
+                    this.character.setName(newName);
+                    System.out.println(character);
+                }
+                else if (modifyChoice == 2) {
+                    String newType = startMenu.askCharacType();
+                    this.character.setType(newType);
+                    Personnage newCharacter;
+                    if (newType.equals("Warrior")) {
+                        newCharacter = new Guerrier(character.getName());
+                    }
+                    else {
+                        newCharacter = new Magicien(character.getName());
+                    }
+                    System.out.println(newCharacter);
+                }
+                break;
+
+            default: break;
+        }
+
+//        this.character = new Magicien("Gérard");
 
 
         try {
             gameBoard.accept(character, playerPosition);
-        } catch (JoueurHorsPlateau e) {
+        } catch (JoueurHorsPlateau _) {
         }
-        while (playerPosition <= gameBoard.getBoardSize() && character.isAlive()) {
-            int rollChoice = startMenu.rollChoice();
-            if (rollChoice == 1) {
-                clearScreen();
-                jouerUnTour();
-            }
-            else if (rollChoice == 2) {
-                System.out.print(character.toString());
-            }
-            else if (rollChoice == 2) {
-                startMenu.exit();
-            }
 
+        while (playerPosition < gameBoard.getBoardSize()) {
+            if (playerPosition == gameBoard.getBoardSize()-1) {
+                System.out.println("Vous avez Gagné");
+            }
+            if (character.isAlive()){
+                int rollChoice = startMenu.rollChoice();
+                if (rollChoice == 1) {
+                    clearScreen();
+                    jouerUnTour();
+                }
+                else if (rollChoice == 2) {
+                    System.out.print(character.toString());
+                }
+                else if (rollChoice == 2) {
+                    startMenu.exit();
+                }
+            }else{
+            String redText = "\u001B[31m";
+            String resetText = "\u001B[0m";
+            System.out.println(redText + "YOU DIED" + resetText);
+            break;
+            }
         }
+
     }
 
 
@@ -85,8 +96,8 @@ public class Game {
      * @return
      */
     public int diceRoll() {
-//        int dice  = (int)(Math.random()*6)+1;
-        int dice = 1;
+        int dice  = (int)(Math.random()*6)+1;
+//        int dice = 1;
         System.out.println("dé: " + dice);
         return dice;
     }
@@ -95,9 +106,11 @@ public class Game {
         int newPosition = pPosition + pRoll;
         gameBoard.accept(this.character, newPosition);
         pPosition = newPosition;
-        System.out.println("Vous êtes case: " + pPosition);
+            System.out.println("Vous êtes case: " + pPosition);
+
         return pPosition;
     }
+
 
     public int jouerUnTour (){
         int diceResult = diceRoll();
@@ -105,18 +118,17 @@ public class Game {
             playerPosition = playerMove(playerPosition, diceResult);
         }catch (JoueurHorsPlateau e){
             playerPosition = gameBoard.getBoardSize()-1;
-            System.out.println(e.getMessage());
         }
         return playerPosition;
-//      gameBoard.get( this.playerPosition).interact( hero );
     }
 
-    // Méthode pour nettoyer l'écran du terminal
-    public static void clearScreen() {
-        for (int i = 0; i < 50; i++) {  // Tu peux ajuster le nombre de lignes si nécessaire
+
+    public void clearScreen(){
+        for (int i = 0; i < 50; i++) {
             System.out.println();
         }
     }
+
 
 
     public int getPlayerPosition() {

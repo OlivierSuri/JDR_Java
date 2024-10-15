@@ -27,6 +27,7 @@ public abstract class Personnage {
         this.attackForce = attackForce;
         this.defensif = defensif;
         this.offensif = offensif;
+
     }
 
     public Personnage(String name) {
@@ -56,21 +57,8 @@ public abstract class Personnage {
         return this.attackForce+this.offensif.getNivAttack();
     }
 
-
-    public void doAttack(Personnage opponent) {
-        int damage = totalAttackPower();
-        opponent.receiveAttack(damage);
-        System.out.println("La vie de votre ennemi est: " + opponent.getHp());
-        if (!opponent.isAlive()) {
-            System.out.println("Votre ennemi meurt");
-        } else {
-            System.out.println("L'ennemi vous attaque");
-            opponent.doAttack(this);
-        }
-
-    }
-    public void receiveAttack(int attack){
-        this.hp-=attack;
+    public int recieveAttack(int attack){
+        return this.hp-=attack-this.defensif.getNivDefense();
     }
 
     public boolean isAlive(){

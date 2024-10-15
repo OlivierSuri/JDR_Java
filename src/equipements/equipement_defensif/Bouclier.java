@@ -5,7 +5,7 @@ public class Bouclier extends EquipementDefensif {
 
     public Bouclier(String name) {
         super(name);
-        this.nivDefense = 2;
+        this.nivDefense = 1;
     }
     public String toString(){
         String message = "Type Bouclier \n"+

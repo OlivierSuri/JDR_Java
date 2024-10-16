@@ -1,6 +1,8 @@
 package equipements;
 
-public abstract class Equipements {
+import board.Case;
+
+public abstract class Equipements implements Case {
     protected String name;
     protected String type;
 

@@ -13,20 +13,20 @@ public class Arme extends EquipementOffensif implements Case {
     }
 
     @Override
-    public void doAction(Personnage personnage) {
+    public int doAction(Personnage personnage, int pos) {
         System.out.println("Vous trouver une arme ! \n" + this.name + ": " + " attaque + " + this.nivAttack);
         if (!(personnage instanceof Guerrier)) {
             System.out.println("Vous ne pouvez pas prendre cette arme");
-            return;
+            return 0;
         }
 
         if (personnage.getOffensif().getNivAttack() < this.getNivAttack()){
             System.out.println("Vous prenez l'arme.");
             personnage.lootGear(this);
-            System.out.println();
         }else{
             System.out.println("Votre arme actuelle est meilleure ou équivalente.");
         }
+        return 0;
     }
 
     public String toString(){

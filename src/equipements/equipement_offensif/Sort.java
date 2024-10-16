@@ -14,11 +14,11 @@ public class Sort extends EquipementOffensif implements Case {
     }
 
     @Override
-    public void doAction(Personnage personnage) {
+    public int doAction(Personnage personnage, int pos) {
         System.out.println("Vous trouver un sort ! " + this.name + ": " + " attaque + " + this.nivAttack);
         if (!(personnage instanceof Magicien)) {
             System.out.println("Vous ne pouvez pas prendre ce sort");
-            return;
+            return 0;
         }
 
         if (personnage.getOffensif().getNivAttack() < this.getNivAttack()){
@@ -28,6 +28,7 @@ public class Sort extends EquipementOffensif implements Case {
         }else{
             System.out.println("Votre sort actuel est meilleure ou équivalente.");
         }
+        return 0;
     }
 
     public String toString(){

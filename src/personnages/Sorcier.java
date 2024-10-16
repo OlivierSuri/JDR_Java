@@ -1,9 +1,7 @@
 package personnages;
 
 import board.Case;
-import equipements.equipement_defensif.Bouclier;
 import equipements.equipement_defensif.Philtre;
-import equipements.equipement_offensif.Arme;
 import equipements.equipement_offensif.Sort;
 
 public class Sorcier extends FightingPerso {

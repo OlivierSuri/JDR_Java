@@ -1,6 +1,9 @@
 package personnages;
 
+import core.Game;
+import equipements.equipement_defensif.Bouclier;
 import equipements.equipement_defensif.EquipementDefensif;
+import equipements.equipement_defensif.Philtre;
 import equipements.equipement_offensif.Arme;
 import equipements.equipement_offensif.EquipementOffensif;
 import equipements.equipement_offensif.Sort;
@@ -73,6 +76,16 @@ public abstract class Personnage {
     public void lootSpell (Sort spell){
         setOffensif(spell);
     }
+    public void lootGear(Bouclier gear) {
+        setDefensif(gear);
+    }
+    public void lootPhiltre (Philtre gear){
+        setDefensif(gear);
+    }
+
+
+
+
 
     public EquipementDefensif getDefensif() {
         return defensif;

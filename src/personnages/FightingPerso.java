@@ -1,6 +1,9 @@
 package personnages;
 
 import board.Case;
+import core.CombatResult;
+import core.Fight;
+import core.Game;
 import equipements.equipement_defensif.EquipementDefensif;
 import equipements.equipement_offensif.EquipementOffensif;
 
@@ -11,22 +14,24 @@ public abstract class FightingPerso extends Personnage implements Case {
     }
 
     @Override
-    public void doAction(Personnage personnage) {
-        int damage = totalAttackPower();
-        int damagePerso = personnage.totalAttackPower();
-        System.out.println( "\n\n¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤" );
-        System.out.println( "¤ Vous rencontrer un " + getType() + " ! ¤" );
-        System.out.println( "¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤\n\n" );
-        System.out.println("Vous attaquez "+ type);
-        this.hp = this.recieveAttack(damagePerso);
-        System.out.println(type + " perd "+ damagePerso + " HP\n");
-        if (!this.isAlive()) {
-            System.out.println(name + " le " +type +" est mort \uD83D\uDC80");
-        }else{
-            System.out.println(name + " le " +type + " attaque !");
-            personnage.recieveAttack(damage);
-            System.out.println(personnage.getName()+ " " + "perd " + damage + " HP\n");
-            System.out.println(name + " le " +type + " prend la fuit: CIAO !");
-        }
+    public int doAction(Personnage personnage, int pos) {
+        Fight fight = new Fight(personnage, this);
+        CombatResult fighting = fight.start();
+            switch (fighting) {
+                case WIN -> System.out.println("Vous remportez la vivtoire");
+                case RECIEVEDAMAGE -> System.out.println("L'ennemi a fui");
+                case RETREAT -> {
+                    System.out.println("Vous prenez la fuite");
+
+                    int dice  = (int)(Math.random()*6)+1;
+                    System.out.println("Vous reculez de " + dice + " cases");
+                    pos -= dice;
+                    System.out.println("Vous êtes case: " + pos);
+//                    Game.playerRetreat(pos, dice);
+
+                }
+
+            }
+            return pos;
     }
 }

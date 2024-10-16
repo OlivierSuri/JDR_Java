@@ -3,6 +3,8 @@ package board;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import core.Game;
 import equipements.Potion.GrandePotion;
 import equipements.Potion.PotionStandard;
 import equipements.equipement_offensif.BouleDeFeu;
@@ -21,7 +23,6 @@ public class Board {
 
    public Board() {
 //       new BoardCaseImpl<CaseVide>(new CaseVide());
-
     board = new ArrayList<Case>();
 
             //Ajout des case elements du jeu
@@ -45,21 +46,31 @@ public class Board {
 
 
    public void addMultipleCase (Case c, int count) {
+       ......
        for (int i = 0; i < count; i++) {
            board.add(c);
        }
    }
 
-    public void accept(Personnage p, int pos) throws JoueurHorsPlateau {
+    public int accept(Personnage p, int pos) throws JoueurHorsPlateau {
         if (pos > boardSize) {
             throw new JoueurHorsPlateau();
         }
         Case c = board.get(pos);
-        c.doAction(p);
+        pos = c.doAction(p, pos);
+        return pos;
     }
     public boolean hasWin (int pos) {
-        return pos == (boardSize - 1);
-    }
+        if (pos == (boardSize - 1)){;
+        System.out.println("Vous avez Gagné");
+        return true;
+    }else{
+            return false;
+        }
+   }
+
+
+
 
     public int getBoardSize() {
         return boardSize;

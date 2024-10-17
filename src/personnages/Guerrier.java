@@ -11,7 +11,7 @@ public class Guerrier extends Personnage{
         this.hp = 10;
         this.attackForce = 10;
         this.defensif = new Bouclier("Bouclier rond");
-        this.offensif = new Arme("Hache");
+        this.offensif = new Arme("Hache", 1);
     }
 
 }

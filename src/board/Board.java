@@ -26,19 +26,37 @@ public class Board {
     board = new ArrayList<Case>();
 
             //Ajout des case elements du jeu
-           addMultipleCase(new Dragon("Smaug"), 4);
-           addMultipleCase(new Gobelin("Gobos"), 10);
-           addMultipleCase(new Sorcier("Vol de morte"), 10);
-           addMultipleCase(new Massue(), 5);
-           addMultipleCase(new Epee(), 4);
-           addMultipleCase(new Eclair(), 5);
-           addMultipleCase(new BouleDeFeu(), 2);
-           addMultipleCase(new PotionStandard(), 6);
-           addMultipleCase(new GrandePotion(), 2);
 
-           // Remplir les cases vide
-           int remainingCases = boardSize - board.size();
-           addMultipleCase(new CaseVide(), remainingCases);
+       for (int i = 0; i < 4; i++) {
+           board.add(new Dragon("Smaug"));
+       }
+       for (int i = 0; i < 10; i++) {
+           board.add(new Gobelin("Gobos"));
+       }
+       for (int i = 0; i < 10; i++) {
+           board.add(new Sorcier("Vol de morte"));
+       }
+       for (int i = 0; i < 5; i++) {
+           board.add(new Massue());
+       }
+       for (int i = 0; i < 4; i++) {
+           board.add(new Epee());
+       }
+       for (int i = 0; i < 5; i++) {
+           board.add(new Eclair());
+       }
+       for (int i = 0; i < 2; i++) {
+           board.add(new BouleDeFeu());
+       }
+       for (int i = 0; i < 6; i++) {
+           board.add(new PotionStandard());
+       }
+       for (int i = 0; i < 2; i++) {
+           board.add(new GrandePotion());
+       }
+       for (int i = 0; i < 15; i++) {
+           board.add(new CaseVide());
+       }
 
            //Mélanger les cases
            Collections.shuffle(board);
@@ -46,7 +64,6 @@ public class Board {
 
 
    public void addMultipleCase (Case c, int count) {
-       ......
        for (int i = 0; i < count; i++) {
            board.add(c);
        }

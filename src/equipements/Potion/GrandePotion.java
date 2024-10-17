@@ -4,7 +4,8 @@ import board.Case;
 
 public class GrandePotion extends EquipementPotion  {
     public GrandePotion() {
-        super("Grande Potion", 5);
+        super("Grande Potion");
+        this.regenPts = 5;
     }
 
 

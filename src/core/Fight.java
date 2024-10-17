@@ -23,7 +23,7 @@ public class Fight {
         displayFightInfo("INIT");
         int combatMenuChoice = combatMenu.combatMenu();
         if (combatMenuChoice == 1) {
-            ennemy.setHp( ennemy.recieveAttack(damageHero) );
+            ennemy.setHp( ennemy.recieveAttack(damageHero));
             displayFightInfo("PLAYER_ATTACK");
             if (!ennemy.isAlive()) {
                 displayFightInfo("ENNEMY_DEAD");
@@ -44,9 +44,10 @@ public class Fight {
     public void displayFightInfo(String status) {
         switch (status) {
             case "INIT":
-                System.out.println( "\n\n¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤" );
-                System.out.println( "¤ Vous rencontrer un " + ennemy.getType() + " ! ¤" );
-                System.out.println( "¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤\n\n" );
+                System.out.println( "\n\n¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤" );
+                System.out.println( "¤  Vous rencontrer un " + ennemy.getType() + " !  ¤" );
+                System.out.println( "¤             Hp " + ennemy.getHp() + " !             ¤" );
+                System.out.println( "¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤\n\n" );
                 break;
 
             case "PLAYER_ATTACK" :

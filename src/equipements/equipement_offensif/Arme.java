@@ -7,9 +7,8 @@ import personnages.Personnage;
 
 public class Arme extends EquipementOffensif implements Case {
 
-    public Arme(String name) {
-        super(name);
-        this.nivAttack = 1;
+    public Arme(String name, int nivAttack) {
+        super(name, 1);
     }
 
     @Override

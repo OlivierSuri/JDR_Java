@@ -6,10 +6,9 @@ import personnages.Personnage;
 
 public abstract class EquipementPotion extends Equipements implements Case{
 
-    protected String name;
     protected int regenPts;
 
-    public EquipementPotion(String name, int regenPts) {
+    public EquipementPotion(String name) {
         super(name, "Potion");
         this.regenPts = 1;
     }

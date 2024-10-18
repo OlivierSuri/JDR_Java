@@ -27,7 +27,7 @@ public abstract class FightingPerso extends Personnage implements Case {
                     System.out.println("Vous reculez de " + dice + " cases");
                     pos -= dice;
                     System.out.println("Vous êtes case: " + pos);
-//                    Game.playerRetreat(pos, dice);
+
 
                 }
 
